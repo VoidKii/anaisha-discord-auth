@@ -1,5 +1,5 @@
 import os
-from flask import Flask, redirect, request, jsonify
+from flask import Flask, redirect, request
 import requests
 
 app = Flask(__name__)
@@ -7,6 +7,8 @@ app = Flask(__name__)
 CLIENT_ID = os.getenv("DISCORD_CLIENT_ID")
 CLIENT_SECRET = os.getenv("DISCORD_CLIENT_SECRET")
 REDIRECT_URI = os.getenv("DISCORD_REDIRECT_URI")
+
+WEBSITE_URL = "https://YOUR-GITHUB-PAGES-URL-HERE"
 
 DISCORD_API = "https://discord.com/api/v10"
 
@@ -65,14 +67,13 @@ def callback():
     if user_response.status_code != 200:
         return "Could not get Discord profile.", 400
 
+    # Discord account successfully connected
     user = user_response.json()
 
-    return jsonify({
-        "message": "Discord connected successfully! ♡",
-        "username": user.get("username"),
-        "id": user.get("id"),
-        "avatar": user.get("avatar")
-    })
+    print("Discord connected:", user.get("username"), user.get("id"))
+
+    # Send user back to the website
+    return redirect(WEBSITE_URL)
 
 
 if __name__ == "__main__":
