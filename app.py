@@ -15,7 +15,7 @@ REDIRECT_URI = os.getenv("DISCORD_REDIRECT_URI")
 # ONLY THIS DISCORD ACCOUNT IS ALLOWED
 ALLOWED_DISCORD_ID = "1538963396064575591"
 
-WEBSITE_URL = "https://voidkii.github.io/anaisha-website-2.0/"
+WEBSITE_URL = "https://anaisha.pages.dev/"
 
 DISCORD_API = "https://discord.com/api/v10"
 
