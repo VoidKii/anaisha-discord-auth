@@ -8,7 +8,7 @@ CLIENT_ID = os.getenv("DISCORD_CLIENT_ID")
 CLIENT_SECRET = os.getenv("DISCORD_CLIENT_SECRET")
 REDIRECT_URI = os.getenv("DISCORD_REDIRECT_URI")
 
-WEBSITE_URL = "https://YOUR-GITHUB-PAGES-URL-HERE"
+WEBSITE_URL = "https://voidkii.github.io/anaisha-website-2.0/"
 
 DISCORD_API = "https://discord.com/api/v10"
 
@@ -67,12 +67,14 @@ def callback():
     if user_response.status_code != 200:
         return "Could not get Discord profile.", 400
 
-    # Discord account successfully connected
     user = user_response.json()
 
-    print("Discord connected:", user.get("username"), user.get("id"))
+    print(
+        "Discord connected:",
+        user.get("username"),
+        user.get("id")
+    )
 
-    # Send user back to the website
     return redirect(WEBSITE_URL)
 
 
